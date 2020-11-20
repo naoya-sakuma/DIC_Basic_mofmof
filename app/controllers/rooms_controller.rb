@@ -59,7 +59,6 @@ class RoomsController < ApplicationController
     end
 
     def room_params
-      params.require(:room).permit(:name, :rent, :adress, :age, :note,
-        stations_attributes:[:route_name, :station_name, :minutes])
+      params.require(:room).permit(:name, :rent, :adress, :age, :note, stations_attributes:[:route_name, :station_name, :minutes])
     end
 end
