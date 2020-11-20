@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
-    station = @room.station.build
+    station = @room.stations.build
   end
 
   def edit
