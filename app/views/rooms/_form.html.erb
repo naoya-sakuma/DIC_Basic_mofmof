@@ -1,4 +1,4 @@
-<%= form_with(model: room, local: true) do |form| %>
+<%= form_with(model: @room, local: true) do |room| %>
   <% if room.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
@@ -12,41 +12,51 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name, "物件名" %>
-    <%= form.text_field :name %>
+    <%= room.label :name, "物件名" %>
+    <%= room.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :rent, "賃料" %>
-    <%= form.number_field :rent %>
+    <%= room.label :rent, "賃料" %>
+    <%= room.number_field :rent %>
   </div>
 
   <div class="field">
-    <%= form.label :adress, "住所" %>
-    <%= form.text_field :adress %>
+    <%= room.label :adress, "住所" %>
+    <%= room.text_field :adress %>
   </div>
 
   <div class="field">
-    <%= form.label :age, "築年数" %>
-    <%= form.number_field :age %>
+    <%= room.label :age, "築年数" %>
+    <%= room.number_field :age %>
   </div>
 
   <div class="field">
-    <%= form.label :note, "備考" %>
-    <%= form.text_area :note %>
+    <%= room.label :note, "備考" %>
+    <%= room.text_area :note %>
   </div>
 
-  <div class="field">
-    <h4>最寄り駅1</h4>
+  <%= room.fields_for :stations do |station| %>
+    <div class="field">
+      <h4>最寄り駅1</h4>
+        <%= station.label :route_name, "路線名" %>
+        <%= station.text_field :route_name %>
+        <%= station.label :station_name, "駅名" %>
+        <%= station.text_field :route_name %>
+        <%= station.label :minutes, "徒歩分数" %>
+        <%= station.number_field :minutes %>
+    </div>
 
-  </div>
-
-
-  <div class="field">
-    <h4>最寄り駅2</h4>
-
-
-  </div>
+    <div class="field">
+      <h4>最寄り駅2</h4>
+        <%= station.label :route_name, "路線名" %>
+        <%= station.text_field :route_name %>
+        <%= station.label :station_name, "駅名" %>
+        <%= station.text_field :route_name %>
+        <%= station.label :minutes, "徒歩分数" %>
+        <%= station.number_field :minutes %>
+    </div>
+  <% =end %>
 
   <div class="actions">
     <%= form.submit %>
