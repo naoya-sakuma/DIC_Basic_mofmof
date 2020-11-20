@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @station = Station.find(params[:id])
   end
 
   def new
