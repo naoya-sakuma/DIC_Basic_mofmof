@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   validates :rent, presence: true
   validates :adress, presence: true
   validates :age, presence: true
-  has_many :stations, inverse_of: :room
+  has_many :stations, inverse_of: :room, dependent: :destroy
   accepts_nested_attributes_for :stations
 
 end
