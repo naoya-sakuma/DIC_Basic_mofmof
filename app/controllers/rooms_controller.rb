@@ -12,13 +12,12 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     2.times { @room.stations.build }
-    #@room.stations.build
   end
 
   def edit
     @room = Room.new
     2.times { @room.stations.build }
-    #station = @room.stations.build
+
   end
 
   def create
