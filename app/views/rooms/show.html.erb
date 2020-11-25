@@ -29,41 +29,26 @@
 </p>
 </div>
 
-<h4 class="station_infomation_title" id="title1">最寄り駅1</h4>
+<% n = 0 %>
+<% @room.stations.each do |r| %>
+<h4 class="station_infomation_title" id="title1">最寄り駅<%= n+= 1 %></h4>
 <div class="near_station_infomation">
   <p>
     <strong>路線名</strong>
-    <%= @room.stations.first.route_name %>
+    <%= r.route_name %>
   </p>
 
   <p>
     <strong>駅名</strong>
-    <%= @room.stations.first.station_name %>
+    <%= r.station_name %>
   </p>
 
   <p>
     <strong>徒歩分数</strong>
-    <%= @room.stations.first.minutes %>
+    <%= r.minutes %>
   </p>
 </div>
-
-<h4 class="station_infomation_title">最寄り駅2</h4>
-<div class="near_station_infomation">
-   <p>
-     <strong>路線名</strong>
-     <%= @room.stations.second.route_name %>
-   </p>
-
-   <p>
-     <strong>駅名</strong>
-     <%= @room.stations.second.station_name %>
-   </p>
-
-   <p>
-     <strong>徒歩分数</strong>
-     <%= @room.stations.second.minutes %>
-   </p>
-</div>
+<% end %>
 
 <%= link_to '編集', edit_room_path(@room) %> |
 <%= link_to '戻る', rooms_path %>
