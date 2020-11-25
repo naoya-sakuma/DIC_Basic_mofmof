@@ -41,7 +41,8 @@ class RoomsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @room.update(room_params)
+      #if @room.update(room_params)
+      if @room.update(update_room_params)
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
@@ -66,5 +67,9 @@ class RoomsController < ApplicationController
 
     def room_params
       params.require(:room).permit(:name, :rent, :adress, :age, :note, stations_attributes:[:route_name, :station_name, :minutes])
+    end
+
+    def update_room_params
+      params.require(:room).permit(:name, :rent, :adress, :age, :note, stations_attributes:[:route_name, :station_name, :minutes,:_destroy, :id])
     end
 end
