@@ -15,9 +15,14 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    #@room = Room.new
-    2.times { @room.stations.build }
-
+    form = @room.stations.count
+    if form == 0
+      2.times { @room.stations.build }
+    elsif form == 1
+      1.times { @room.stations.build }
+    else
+     form+1.times { @room.stations.build }
+   end
   end
 
   def create
